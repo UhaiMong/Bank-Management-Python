@@ -35,7 +35,7 @@ class User:
             self.loan_taken += amount
             self.loan_limit -= 1
             self.deposit(amount)
-            return f'Loan of {amount} taken successfully. Remaining loans: {self.loan_limit}'
+            return f'Loan of {amount} taken successfully. Loan limit is: {self.loan_limit}.'
         else:
             return "Maximum loan limit reached."
 
@@ -51,4 +51,4 @@ class User:
             return "The bank is bankrupt"
 
     def __str__(self):
-        return f"Account Number: {self.account_number}\nName: {self.name}\nBalance: {self.balance}"
+        return f"Account Number: {self.account_number}\nName: {self.name}\nBalance: {self.balance}\nEmail: {self.email}\nAddress: {self.address}"

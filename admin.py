@@ -1,4 +1,3 @@
-# admin.py
 class Admin:
     def __init__(self):
         self.user_accounts = []

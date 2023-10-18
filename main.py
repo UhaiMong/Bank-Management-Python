@@ -9,24 +9,24 @@ def main():
         print("\n1. User Menu")
         print("2. Admin Menu")
         print("3. Exit")
-        choice = input("Enter your choice: ")
+        operate = input("Operation: ")
 
-        if choice == '1':
+        if operate == '1':
             user_menu(admin)
-        elif choice == '2':
+        elif operate == '2':
             admin_menu(admin)
-        elif choice == '3':
+        elif operate == '3':
             break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid operation. Plz, Try again.")
 
 
 def user_menu(admin):
     print("\nUser Menu:")
-    account_name = input("Enter your name: ")
-    account_email = input("Enter your email: ")
-    account_address = input("Enter your address: ")
-    account_type = input("Enter account type (Savings/Current): ").lower()
+    account_name = input("User Name: ")
+    account_email = input("Email: ")
+    account_address = input("Address: ")
+    account_type = input("Account type (Savings/Current): ").lower()
 
     user = User(account_name, account_email, account_address, account_type)
     admin.create_account(user)
@@ -41,30 +41,30 @@ def user_menu(admin):
         print("5. Take Loan")
         print("6. Transfer Money")
         print("7. Back to Main Menu")
-        choice = input("Enter your choice: ")
+        operate = input("Operation: ")
 
-        if choice == '1':
+        if operate == '1':
             amount = int(input("Enter the deposit amount: "))
             user.deposit(amount)
             print(f"Deposited {amount} successfully.")
-        elif choice == '2':
+        elif operate == '2':
             amount = int(input("Enter the withdrawal amount: "))
             result = user.withdraw(amount)
             if result:
                 print(result)
             else:
                 print(f"Withdrew {amount} successfully.")
-        elif choice == '3':
+        elif operate == '3':
             print(f"Available balance: {user.check_balance()}")
-        elif choice == '4':
+        elif operate == '4':
             print("Transaction History:")
             for transaction in user.get_transaction_history():
                 print(transaction)
-        elif choice == '5':
+        elif operate == '5':
             amount = int(input("Enter the loan amount: "))
             result = user.take_loan(amount)
             print(result)
-        elif choice == '6':
+        elif operate == '6':
             recipient_account_number = int(
                 input("Enter recipient's account number: "))
             recipient = find_user_by_account_number(
@@ -80,10 +80,10 @@ def user_menu(admin):
                         f"Transferred {amount} to {recipient.name} successfully.")
             else:
                 print("Recipient account does not exist.")
-        elif choice == '7':
+        elif operate == '7':
             break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid operation. Plz, Try again.")
 
 
 def admin_menu(admin):
@@ -95,29 +95,29 @@ def admin_menu(admin):
         print("4. Total Loan Amount")
         print("5. Toggle Loan Feature")
         print("6. Back to Main Menu")
-        choice = input("Enter your choice: ")
+        operate = input("Operation: ")
 
-        if choice == '1':
+        if operate == '1':
             account_number = int(input("Enter the account number to delete: "))
             result = admin.delete_account(account_number)
             print(result)
-        elif choice == '2':
+        elif operate == '2':
             print("User List:")
             for user in admin.get_user_list():
                 print(user)
-        elif choice == '3':
+        elif operate == '3':
             print(f"Total Bank Balance: {admin.get_total_balance()}")
-        elif choice == '4':
+        elif operate == '4':
             print(f"Total Loan Amount: {admin.get_total_loan_amount()}")
-        elif choice == '5':
+        elif operate == '5':
             status = input(
                 "Enter 1 to enable or 0 to disable the loan feature: ")
             admin.toggle_loan_feature(bool(int(status)))
             print("Loan feature updated.")
-        elif choice == '6':
+        elif operate == '6':
             break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid Operation. Plz, Try again.")
 
 
 def find_user_by_account_number(admin, account_number):
